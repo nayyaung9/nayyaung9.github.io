@@ -7,7 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
+import { useDimensions } from "./use-dimensions";
 import "./header.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,6 +63,8 @@ const Header = () => {
   const classes = useStyles();
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
+
   return (
     <AppBar position="static" className={classes.header}>
       <Toolbar>
@@ -80,8 +82,9 @@ const Header = () => {
           <motion.nav
             initial={false}
             animate={isOpen ? "open" : "closed"}
-            custom="230"
+            custom={height}
             ref={containerRef}
+            className={isOpen ? "mobileNav" : ""}
           >
             <Navigation />
             <MenuToggle toggle={() => toggleOpen()} />

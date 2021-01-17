@@ -1,15 +1,13 @@
 import React from "react";
-import ProfileQuote from "./components/ProfileQuote";
 import Header from "./components/header/Header";
+import ProfileContent from "./components/profile/ProfileContent";
 import "./App.css";
 
 function App() {
   return (
     <>
       <Header />
-      <div className="example-container">
-        {/* <ProfileQuote /> */}
-      </div>
+      <ProfileContent />
     </>
   );
 }
